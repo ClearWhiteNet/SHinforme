@@ -1,0 +1,127 @@
+# ============================================
+# .gitignore — ShinyHunters CTI Report
+# ============================================
+# Este repositorio contiene inteligencia de amenazas
+# de fuentes públicas. NO debe contener:
+# - Datos personales de víctimas
+# - Credenciales o tokens
+# - Capturas con PII no redactada
+# - Archivos binarios maliciosos
+# ============================================
+
+# --- Datos sensibles / PII ---
+*.pii
+*.personal
+victim-data/
+pii/
+doxxing/
+personal-info/
+
+# --- Credenciales y secretos ---
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+credentials/
+secrets/
+tokens/
+api-keys/
+
+# --- Capturas sin redactar ---
+evidence/screenshots/*.png
+evidence/screenshots/*.jpg
+evidence/screenshots/*.jpeg
+!evidence/screenshots/.gitkeep
+!evidence/screenshots/README.md
+
+# --- Archivos de malware / muestras ---
+*.exe
+*.dll
+*.so
+*.dylib
+*.bin
+*.jar
+*.war
+*.jsp
+*.jspx
+*.php
+*.asp
+*.aspx
+samples/
+malware/
+payloads/
+
+# --- Volcados de datos ---
+*.sql
+*.sqlite
+*.db
+*.dump
+*.csv
+*.json
+!package.json
+!*.example.json
+dumps/
+leaks/
+databases/
+
+# --- Herramientas de ataque ---
+*.onion
+*.tox
+*.session
+*.ovpn
+*.conf
+!*.example.conf
+exploits/
+tools/offensive/
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# --- Editores ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# --- Dependencias ---
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# --- Build / output ---
+dist/
+build/
+out/
+*.log
+logs/
+
+# --- Backups ---
+*.bak
+*.backup
+*.old
+*.orig
+
+# --- PDFs generados ---
+*.pdf
+!docs/*.pdf
+
+# --- Archivos temporales ---
+*.tmp
+*.temp
+*.cache
+.cache/
+tmp/
+temp/
