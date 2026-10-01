@@ -99,6 +99,148 @@ víctimas reportadas.
 
 ![Mapa mundial de riesgo](mapa-riesgo.svg)
 
+---
+
+## Mapa mundial de riesgo
+
+```geojson
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Estados Unidos",
+        "level": "ALTO",
+        "description": "FBIJobs.gov, CyrusOne, Matthew D. Lane"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-77.0369, 38.9072]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Países Bajos",
+        "level": "ALTO",
+        "description": "Arresto de Van der Stap (Ámsterdam)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.9041, 52.3676]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jordania",
+        "level": "ALTO",
+        "description": "Ray (Ammán), presunto líder actual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.9106, 31.9539]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rusia",
+        "level": "ALTO",
+        "description": "@shinydreffus, KillNet, NoName057(16)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [37.6173, 55.7558]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Francia",
+        "level": "MEDIO",
+        "description": "Arrestos BL2C, conexión Android App"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.3522, 48.8566]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "España",
+        "level": "MEDIO",
+        "description": "Arrestos DDoSia (Sevilla, Huelva, Manacor)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.9845, 37.3891]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alemania",
+        "level": "MEDIO",
+        "description": "Jurisdicción Tuta, Inside Darknet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [13.4050, 52.5200]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Marruecos",
+        "level": "MEDIO",
+        "description": "Extradición de Sébastien Raoult"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.8498, 34.0209]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brasil",
+        "level": "BAJO",
+        "description": "Víctimas (Google Brasil, Vevo)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-47.9292, -15.7801]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "India",
+        "level": "BAJO",
+        "description": "Víctimas reportadas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.2090, 28.6139]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Australia",
+        "level": "BAJO",
+        "description": "Víctimas SaaS reportadas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [149.1300, -35.2809]
+      }
+    }
+  ]
+}
 ```
 
 ### Tabla de riesgo por región
