@@ -1,87 +1,325 @@
-<svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', monospace">
   <defs>
-    <radialGradient id="riskHigh" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ff003c" stop-opacity="0.9"/>
+    <!-- Glow filters -->
+    <filter id="glowRed" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowYellow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Gradients -->
+    <radialGradient id="pulseRed">
+      <stop offset="0%" stop-color="#ff003c" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#ff003c" stop-opacity="0.3"/>
       <stop offset="100%" stop-color="#ff003c" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="riskMed" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffe600" stop-opacity="0.8"/>
+    <radialGradient id="pulseYellow">
+      <stop offset="0%" stop-color="#ffe600" stop-opacity="0.7"/>
+      <stop offset="40%" stop-color="#ffe600" stop-opacity="0.25"/>
       <stop offset="100%" stop-color="#ffe600" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="riskLow" cx="50%" cy="50%" r="50%">
+    <radialGradient id="pulseGreen">
       <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+      <stop offset="40%" stop-color="#00ff88" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05010a"/>
+      <stop offset="50%" stop-color="#0a0416"/>
+      <stop offset="100%" stop-color="#05010a"/>
+    </linearGradient>
+
+    <!-- Animated pulse -->
+    <style>
+      @keyframes pulse {
+        0% { r: 8; opacity: 0.9; }
+        100% { r: 60; opacity: 0; }
+      }
+      @keyframes pulse2 {
+        0% { r: 8; opacity: 0.7; }
+        100% { r: 45; opacity: 0; }
+      }
+      @keyframes dash {
+        to { stroke-dashoffset: -100; }
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+      .pulse-red { animation: pulse 2.5s ease-out infinite; }
+      .pulse-red-2 { animation: pulse 2.5s ease-out infinite 0.8s; }
+      .pulse-yellow { animation: pulse2 3s ease-out infinite; }
+      .pulse-green { animation: pulse2 3.5s ease-out infinite; }
+      .line-flow { stroke-dasharray: 8 4; animation: dash 3s linear infinite; }
+      .blink { animation: blink 1.5s ease-in-out infinite; }
+    </style>
   </defs>
 
-  <rect width="1000" height="500" fill="#05010a"/>
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#bgGrad)"/>
 
-  <g fill="#1a0d2e" stroke="#00fff7" stroke-width="0.5" opacity="0.6">
-    <path d="M120,150 L200,120 L260,140 L280,200 L240,260 L180,280 L140,240 Z"/>
-    <path d="M240,300 L280,300 L300,360 L280,440 L250,460 L230,400 L220,340 Z"/>
-    <path d="M460,140 L520,130 L560,150 L570,190 L540,220 L490,210 L460,180 Z"/>
-    <path d="M470,240 L540,230 L580,280 L570,380 L530,440 L490,400 L470,320 Z"/>
-    <path d="M580,120 L720,110 L820,140 L850,200 L800,260 L720,280 L640,240 L590,190 Z"/>
-    <path d="M780,340 L850,330 L880,380 L850,420 L790,410 L770,380 Z"/>
+  <!-- Grid background -->
+  <g stroke="#00fff7" stroke-width="0.3" opacity="0.08">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+    <line x1="800" y1="0" x2="800" y2="600"/>
+    <line x1="1000" y1="0" x2="1000" y2="600"/>
   </g>
 
-  <circle cx="520" cy="160" r="60" fill="url(#riskHigh)"/>
-  <circle cx="520" cy="160" r="4" fill="#ff003c"/>
-  <text x="520" y="150" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">NL</text>
-
-  <circle cx="620" cy="220" r="50" fill="url(#riskHigh)"/>
-  <circle cx="620" cy="220" r="4" fill="#ff003c"/>
-  <text x="620" y="210" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">JO</text>
-
-  <circle cx="720" cy="130" r="70" fill="url(#riskHigh)"/>
-  <circle cx="720" cy="130" r="4" fill="#ff003c"/>
-  <text x="720" y="120" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">RU</text>
-
-  <circle cx="200" cy="200" r="80" fill="url(#riskHigh)"/>
-  <circle cx="200" cy="200" r="4" fill="#ff003c"/>
-  <text x="200" y="190" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">US</text>
-
-  <circle cx="500" cy="170" r="35" fill="url(#riskMed)"/>
-  <circle cx="500" cy="170" r="3" fill="#ffe600"/>
-  <text x="500" y="162" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">FR</text>
-
-  <circle cx="480" cy="185" r="30" fill="url(#riskMed)"/>
-  <circle cx="480" cy="185" r="3" fill="#ffe600"/>
-  <text x="480" y="178" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">ES</text>
-
-  <circle cx="480" cy="210" r="25" fill="url(#riskMed)"/>
-  <circle cx="480" cy="210" r="3" fill="#ffe600"/>
-  <text x="480" y="203" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">MA</text>
-
-  <circle cx="530" cy="150" r="30" fill="url(#riskMed)"/>
-  <circle cx="530" cy="150" r="3" fill="#ffe600"/>
-  <text x="530" y="143" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">DE</text>
-
-  <circle cx="270" cy="370" r="35" fill="url(#riskLow)"/>
-  <circle cx="270" cy="370" r="3" fill="#00ff88"/>
-  <text x="270" y="363" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">BR</text>
-
-  <circle cx="700" cy="230" r="30" fill="url(#riskLow)"/>
-  <circle cx="700" cy="230" r="3" fill="#00ff88"/>
-  <text x="700" y="223" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">IN</text>
-
-  <circle cx="830" cy="380" r="30" fill="url(#riskLow)"/>
-  <circle cx="830" cy="380" r="3" fill="#00ff88"/>
-  <text x="830" y="373" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">AU</text>
-
-  <g transform="translate(20, 440)">
-    <circle cx="10" cy="0" r="6" fill="#ff003c"/>
-    <text x="25" y="4" fill="#d8e6ff" font-size="10" font-family="monospace">ALTO</text>
-    <circle cx="100" cy="0" r="6" fill="#ffe600"/>
-    <text x="115" y="4" fill="#d8e6ff" font-size="10" font-family="monospace">MEDIO</text>
-    <circle cx="200" cy="0" r="6" fill="#00ff88"/>
-    <text x="215" y="4" fill="#d8e6ff" font-size="10" font-family="monospace">BAJO</text>
-  </g>
-
-  <text x="500" y="30" fill="#00fff7" font-size="16" font-family="monospace" text-anchor="middle" font-weight="bold">
-    MAPA MUNDIAL DE RIESGO — SHINYHUNTERS / SLSH
+  <!-- TITLE -->
+  <text x="600" y="35" fill="#00fff7" font-size="20" font-weight="bold" text-anchor="middle" letter-spacing="3" filter="url(#glowCyan)">
+    MAPA MUNDIAL DE RIESGO
   </text>
-  <text x="500" y="48" fill="#7a8bb5" font-size="10" font-family="monospace" text-anchor="middle">
-    Basado en atribuciones OSINT, arrestos, infraestructura y víctimas reportadas
+  <text x="600" y="55" fill="#ff00e6" font-size="11" text-anchor="middle" letter-spacing="2">
+    SHINYHUNTERS / SCATTERED LAPSUS$ HUNTERS (SLSH)
+  </text>
+
+  <!-- ============================================ -->
+  <!-- CONTINENTES (formas reconocibles) -->
+  <!-- ============================================ -->
+  <g fill="#0d0620" stroke="#00fff7" stroke-width="0.8" opacity="0.85" filter="url(#glowCyan)">
+
+    <!-- NORTH AMERICA -->
+    <path d="M 130,120 
+             L 180,100 L 240,95 L 290,100 L 320,120 L 330,140 
+             L 340,155 L 335,175 L 320,185 L 310,200 L 300,215 
+             L 290,235 L 270,250 L 255,260 L 245,275 L 235,285 
+             L 220,290 L 210,285 L 215,270 L 225,255 L 235,240 
+             L 230,220 L 220,205 L 205,195 L 190,190 L 175,185 
+             L 165,175 L 155,165 L 145,155 L 135,145 Z"/>
+
+    <!-- GREENLAND -->
+    <path d="M 310,80 L 350,75 L 370,90 L 365,115 L 340,125 L 315,115 Z"/>
+
+    <!-- CENTRAL AMERICA -->
+    <path d="M 220,290 L 240,290 L 255,300 L 270,315 L 285,325 
+             L 290,335 L 280,340 L 265,335 L 250,325 L 235,315 
+             L 225,305 Z"/>
+
+    <!-- SOUTH AMERICA -->
+    <path d="M 290,340 
+             L 320,340 L 345,355 L 360,380 L 365,410 L 360,440 
+             L 350,470 L 335,495 L 320,515 L 305,530 L 295,540 
+             L 285,545 L 280,535 L 285,515 L 290,495 L 295,475 
+             L 290,455 L 280,435 L 275,415 L 275,395 L 280,375 
+             L 285,360 Z"/>
+
+    <!-- EUROPE -->
+    <path d="M 560,120 
+             L 600,110 L 630,115 L 650,125 L 660,140 L 655,155 
+             L 645,165 L 630,170 L 615,165 L 600,160 L 585,165 
+             L 575,175 L 565,180 L 555,175 L 550,160 L 545,145 
+             L 550,130 Z"/>
+
+    <!-- UK / IRELAND -->
+    <path d="M 535,125 L 550,120 L 555,135 L 545,145 L 535,140 Z"/>
+
+    <!-- SCANDINAVIA -->
+    <path d="M 600,90 L 620,80 L 635,85 L 640,100 L 630,115 L 615,115 L 605,105 Z"/>
+
+    <!-- AFRICA -->
+    <path d="M 570,200 
+             L 620,195 L 660,205 L 690,225 L 700,250 L 695,275 
+             L 685,300 L 675,325 L 660,350 L 645,375 L 630,395 
+             L 615,410 L 600,415 L 590,410 L 585,395 L 580,375 
+             L 575,355 L 570,335 L 565,315 L 560,295 L 555,275 
+             L 555,255 L 560,235 L 565,215 Z"/>
+
+    <!-- MADAGASCAR -->
+    <path d="M 690,360 L 705,355 L 715,375 L 710,400 L 695,405 L 685,385 Z"/>
+
+    <!-- MIDDLE EAST -->
+    <path d="M 660,170 L 700,165 L 730,175 L 745,195 L 740,215 
+             L 725,230 L 705,235 L 685,230 L 670,220 L 660,200 Z"/>
+
+    <!-- ASIA -->
+    <path d="M 745,90 
+             L 820,80 L 900,85 L 960,100 L 1010,120 L 1040,145 
+             L 1055,170 L 1050,195 L 1035,215 L 1010,230 L 985,240 
+             L 960,245 L 940,255 L 920,265 L 900,270 L 880,265 
+             L 860,255 L 840,250 L 820,250 L 800,245 L 780,235 
+             L 765,220 L 755,200 L 750,180 L 745,160 L 740,140 
+             L 740,120 Z"/>
+
+    <!-- INDIA -->
+    <path d="M 820,250 L 860,245 L 880,260 L 885,285 L 875,310 
+             L 860,330 L 845,340 L 835,325 L 825,305 L 820,285 Z"/>
+
+    <!-- SOUTHEAST ASIA -->
+    <path d="M 900,280 L 940,275 L 960,290 L 970,310 L 960,330 
+             L 940,340 L 920,335 L 905,320 L 895,300 Z"/>
+
+    <!-- JAPAN -->
+    <path d="M 1050,180 L 1065,175 L 1075,195 L 1070,220 L 1055,230 L 1045,215 L 1045,195 Z"/>
+
+    <!-- AUSTRALIA -->
+    <path d="M 900,420 
+             L 960,410 L 1020,415 L 1060,435 L 1075,465 L 1065,495 
+             L 1040,515 L 1000,520 L 960,515 L 930,500 L 910,480 
+             L 900,455 Z"/>
+
+    <!-- NEW ZEALAND -->
+    <path d="M 1090,500 L 1100,495 L 1105,515 L 1095,530 L 1085,520 Z"/>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- CONNECTION LINES (ataques entre regiones) -->
+  <!-- ============================================ -->
+  <g stroke="#ff00e6" stroke-width="0.8" fill="none" opacity="0.35">
+    <path class="line-flow" d="M 280,200 Q 450,150 600,160"/>
+    <path class="line-flow" d="M 600,160 Q 700,120 800,130"/>
+    <path class="line-flow" d="M 800,130 Q 850,180 870,250"/>
+    <path class="line-flow" d="M 280,200 Q 500,300 600,250"/>
+    <path class="line-flow" d="M 600,250 Q 750,350 950,450"/>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- RISK ZONES -->
+  <!-- ============================================ -->
+
+  <!-- USA — ALTO -->
+  <g>
+    <circle cx="270" cy="200" r="8" fill="url(#pulseRed)" class="pulse-red"/>
+    <circle cx="270" cy="200" r="8" fill="url(#pulseRed)" class="pulse-red-2"/>
+    <circle cx="270" cy="200" r="5" fill="#ff003c" filter="url(#glowRed)"/>
+    <circle cx="270" cy="200" r="2" fill="#ffffff"/>
+    <text x="270" y="185" fill="#ff003c" font-size="11" font-weight="bold" text-anchor="middle">US</text>
+    <text x="270" y="220" fill="#ff003c" font-size="8" text-anchor="middle" opacity="0.8">ALTO</text>
+  </g>
+
+  <!-- NETHERLANDS — ALTO -->
+  <g>
+    <circle cx="575" cy="150" r="7" fill="url(#pulseRed)" class="pulse-red"/>
+    <circle cx="575" cy="150" r="7" fill="url(#pulseRed)" class="pulse-red-2"/>
+    <circle cx="575" cy="150" r="4" fill="#ff003c" filter="url(#glowRed)"/>
+    <circle cx="575" cy="150" r="2" fill="#ffffff"/>
+    <text x="575" y="138" fill="#ff003c" font-size="10" font-weight="bold" text-anchor="middle">NL</text>
+  </g>
+
+  <!-- JORDAN — ALTO -->
+  <g>
+    <circle cx="720" cy="205" r="7" fill="url(#pulseRed)" class="pulse-red"/>
+    <circle cx="720" cy="205" r="7" fill="url(#pulseRed)" class="pulse-red-2"/>
+    <circle cx="720" cy="205" r="4" fill="#ff003c" filter="url(#glowRed)"/>
+    <circle cx="720" cy="205" r="2" fill="#ffffff"/>
+    <text x="720" y="193" fill="#ff003c" font-size="10" font-weight="bold" text-anchor="middle">JO</text>
+  </g>
+
+  <!-- RUSSIA — ALTO -->
+  <g>
+    <circle cx="820" cy="110" r="8" fill="url(#pulseRed)" class="pulse-red"/>
+    <circle cx="820" cy="110" r="8" fill="url(#pulseRed)" class="pulse-red-2"/>
+    <circle cx="820" cy="110" r="5" fill="#ff003c" filter="url(#glowRed)"/>
+    <circle cx="820" cy="110" r="2" fill="#ffffff"/>
+    <text x="820" y="98" fill="#ff003c" font-size="11" font-weight="bold" text-anchor="middle">RU</text>
+  </g>
+
+  <!-- FRANCE — MEDIO -->
+  <g>
+    <circle cx="565" cy="165" r="5" fill="url(#pulseYellow)" class="pulse-yellow"/>
+    <circle cx="565" cy="165" r="3" fill="#ffe600" filter="url(#glowYellow)"/>
+    <circle cx="565" cy="165" r="1.5" fill="#ffffff"/>
+    <text x="555" y="180" fill="#ffe600" font-size="8" text-anchor="middle">FR</text>
+  </g>
+
+  <!-- SPAIN — MEDIO -->
+  <g>
+    <circle cx="550" cy="180" r="5" fill="url(#pulseYellow)" class="pulse-yellow"/>
+    <circle cx="550" cy="180" r="3" fill="#ffe600" filter="url(#glowYellow)"/>
+    <circle cx="550" cy="180" r="1.5" fill="#ffffff"/>
+    <text x="535" y="195" fill="#ffe600" font-size="8" text-anchor="middle">ES</text>
+  </g>
+
+  <!-- GERMANY — MEDIO -->
+  <g>
+    <circle cx="590" cy="145" r="5" fill="url(#pulseYellow)" class="pulse-yellow"/>
+    <circle cx="590" cy="145" r="3" fill="#ffe600" filter="url(#glowYellow)"/>
+    <circle cx="590" cy="145" r="1.5" fill="#ffffff"/>
+    <text x="605" y="140" fill="#ffe600" font-size="8" text-anchor="middle">DE</text>
+  </g>
+
+  <!-- MOROCCO — MEDIO -->
+  <g>
+    <circle cx="555" cy="205" r="4" fill="url(#pulseYellow)" class="pulse-yellow"/>
+    <circle cx="555" cy="205" r="2.5" fill="#ffe600" filter="url(#glowYellow)"/>
+    <text x="540" y="220" fill="#ffe600" font-size="7" text-anchor="middle">MA</text>
+  </g>
+
+  <!-- BRAZIL — BAJO -->
+  <g>
+    <circle cx="310" cy="440" r="5" fill="url(#pulseGreen)" class="pulse-green"/>
+    <circle cx="310" cy="440" r="3" fill="#00ff88" filter="url(#glowCyan)"/>
+    <circle cx="310" cy="440" r="1.5" fill="#ffffff"/>
+    <text x="310" y="460" fill="#00ff88" font-size="8" text-anchor="middle">BR</text>
+  </g>
+
+  <!-- INDIA — BAJO -->
+  <g>
+    <circle cx="850" cy="290" r="5" fill="url(#pulseGreen)" class="pulse-green"/>
+    <circle cx="850" cy="290" r="3" fill="#00ff88" filter="url(#glowCyan)"/>
+    <text x="850" y="308" fill="#00ff88" font-size="8" text-anchor="middle">IN</text>
+  </g>
+
+  <!-- AUSTRALIA — BAJO -->
+  <g>
+    <circle cx="985" cy="470" r="5" fill="url(#pulseGreen)" class="pulse-green"/>
+    <circle cx="985" cy="470" r="3" fill="#00ff88" filter="url(#glowCyan)"/>
+    <text x="985" y="490" fill="#00ff88" font-size="8" text-anchor="middle">AU</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LIVE INDICATOR -->
+  <!-- ============================================ -->
+  <g transform="translate(1080, 25)">
+    <circle cx="0" cy="0" r="4" fill="#ff003c" class="blink"/>
+    <text x="12" y="4" fill="#ff003c" font-size="9" letter-spacing="1">LIVE</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LEGEND -->
+  <!-- ============================================ -->
+  <g transform="translate(30, 555)">
+    <rect x="-10" y="-15" width="380" height="30" fill="#05010a" stroke="#00fff7" stroke-width="0.5" opacity="0.9" rx="3"/>
+    
+    <circle cx="5" cy="0" r="5" fill="#ff003c" filter="url(#glowRed)"/>
+    <text x="18" y="4" fill="#d8e6ff" font-size="9" letter-spacing="1">ALTO</text>
+    
+    <circle cx="90" cy="0" r="5" fill="#ffe600" filter="url(#glowYellow)"/>
+    <text x="103" y="4" fill="#d8e6ff" font-size="9" letter-spacing="1">MEDIO</text>
+    
+    <circle cx="180" cy="0" r="5" fill="#00ff88" filter="url(#glowCyan)"/>
+    <text x="193" y="4" fill="#d8e6ff" font-size="9" letter-spacing="1">BAJO</text>
+    
+    <line x1="260" y1="0" x2="295" y2="0" stroke="#ff00e6" stroke-width="1" stroke-dasharray="4 2"/>
+    <text x="302" y="4" fill="#d8e6ff" font-size="9" letter-spacing="1">ATAQUE</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================ -->
+  <text x="600" y="585" fill="#7a8bb5" font-size="9" text-anchor="middle" letter-spacing="1">
+    TLP:WHITE // Basado en OSINT, arrestos, infraestructura y víctimas reportadas // 2026
   </text>
 </svg>
