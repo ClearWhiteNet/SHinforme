@@ -1,0 +1,87 @@
+<svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="riskHigh" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff003c" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ff003c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="riskMed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe600" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffe600" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="riskLow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1000" height="500" fill="#05010a"/>
+
+  <g fill="#1a0d2e" stroke="#00fff7" stroke-width="0.5" opacity="0.6">
+    <path d="M120,150 L200,120 L260,140 L280,200 L240,260 L180,280 L140,240 Z"/>
+    <path d="M240,300 L280,300 L300,360 L280,440 L250,460 L230,400 L220,340 Z"/>
+    <path d="M460,140 L520,130 L560,150 L570,190 L540,220 L490,210 L460,180 Z"/>
+    <path d="M470,240 L540,230 L580,280 L570,380 L530,440 L490,400 L470,320 Z"/>
+    <path d="M580,120 L720,110 L820,140 L850,200 L800,260 L720,280 L640,240 L590,190 Z"/>
+    <path d="M780,340 L850,330 L880,380 L850,420 L790,410 L770,380 Z"/>
+  </g>
+
+  <circle cx="520" cy="160" r="60" fill="url(#riskHigh)"/>
+  <circle cx="520" cy="160" r="4" fill="#ff003c"/>
+  <text x="520" y="150" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">NL</text>
+
+  <circle cx="620" cy="220" r="50" fill="url(#riskHigh)"/>
+  <circle cx="620" cy="220" r="4" fill="#ff003c"/>
+  <text x="620" y="210" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">JO</text>
+
+  <circle cx="720" cy="130" r="70" fill="url(#riskHigh)"/>
+  <circle cx="720" cy="130" r="4" fill="#ff003c"/>
+  <text x="720" y="120" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">RU</text>
+
+  <circle cx="200" cy="200" r="80" fill="url(#riskHigh)"/>
+  <circle cx="200" cy="200" r="4" fill="#ff003c"/>
+  <text x="200" y="190" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">US</text>
+
+  <circle cx="500" cy="170" r="35" fill="url(#riskMed)"/>
+  <circle cx="500" cy="170" r="3" fill="#ffe600"/>
+  <text x="500" y="162" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">FR</text>
+
+  <circle cx="480" cy="185" r="30" fill="url(#riskMed)"/>
+  <circle cx="480" cy="185" r="3" fill="#ffe600"/>
+  <text x="480" y="178" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">ES</text>
+
+  <circle cx="480" cy="210" r="25" fill="url(#riskMed)"/>
+  <circle cx="480" cy="210" r="3" fill="#ffe600"/>
+  <text x="480" y="203" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">MA</text>
+
+  <circle cx="530" cy="150" r="30" fill="url(#riskMed)"/>
+  <circle cx="530" cy="150" r="3" fill="#ffe600"/>
+  <text x="530" y="143" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">DE</text>
+
+  <circle cx="270" cy="370" r="35" fill="url(#riskLow)"/>
+  <circle cx="270" cy="370" r="3" fill="#00ff88"/>
+  <text x="270" y="363" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">BR</text>
+
+  <circle cx="700" cy="230" r="30" fill="url(#riskLow)"/>
+  <circle cx="700" cy="230" r="3" fill="#00ff88"/>
+  <text x="700" y="223" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">IN</text>
+
+  <circle cx="830" cy="380" r="30" fill="url(#riskLow)"/>
+  <circle cx="830" cy="380" r="3" fill="#00ff88"/>
+  <text x="830" y="373" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">AU</text>
+
+  <g transform="translate(20, 440)">
+    <circle cx="10" cy="0" r="6" fill="#ff003c"/>
+    <text x="25" y="4" fill="#d8e6ff" font-size="10" font-family="monospace">ALTO</text>
+    <circle cx="100" cy="0" r="6" fill="#ffe600"/>
+    <text x="115" y="4" fill="#d8e6ff" font-size="10" font-family="monospace">MEDIO</text>
+    <circle cx="200" cy="0" r="6" fill="#00ff88"/>
+    <text x="215" y="4" fill="#d8e6ff" font-size="10" font-family="monospace">BAJO</text>
+  </g>
+
+  <text x="500" y="30" fill="#00fff7" font-size="16" font-family="monospace" text-anchor="middle" font-weight="bold">
+    MAPA MUNDIAL DE RIESGO — SHINYHUNTERS / SLSH
+  </text>
+  <text x="500" y="48" fill="#7a8bb5" font-size="10" font-family="monospace" text-anchor="middle">
+    Basado en atribuciones OSINT, arrestos, infraestructura y víctimas reportadas
+  </text>
+</svg>
