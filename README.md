@@ -5,6 +5,7 @@
 [![Purpose: Defensive](https://img.shields.io/badge/Purpose-Defensive-blue)]()
 [![Status: Public](https://img.shields.io/badge/Status-Public-green)]()
 
+![WHITENET](ShinyHunter.png)
 > **Aviso:** Este repositorio contiene inteligencia de amenazas de fuentes
 > públicas con fines **defensivos, educativos y de denuncia**. No contiene
 > datos personales de víctimas, credenciales, malware ni herramientas
