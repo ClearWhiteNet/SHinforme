@@ -240,6 +240,21 @@ víctimas reportadas.
   ]
 }
 ```
+**Puntos identificados:**
+
+| País | Coordenadas | Nivel | Justificación |
+|---|---|---|---|
+| 🇺🇸 EE.UU. | 270, 200 | 🔴 ALTO | FBIJobs.gov, CyrusOne, Matthew D. Lane |
+| 🇳🇱 Países Bajos | 575, 150 | 🔴 ALTO | Arresto de Van der Stap (Ámsterdam) |
+| 🇯🇴 Jordania | 720, 205 | 🔴 ALTO | "Ray" (Ammán), presunto líder actual |
+| 🇷🇺 Rusia | 820, 110 | 🔴 ALTO | @shinydreffus, KillNet, NoName057(16) |
+| 🇫🇷 Francia | 565, 165 | 🟡 MEDIO | Arrestos BL2C, conexión Android App |
+| 🇪🇸 España | 550, 180 | 🟡 MEDIO | Arrestos DDoSia (Sevilla, Huelva, Manacor) |
+| 🇩🇪 Alemania | 590, 145 | 🟡 MEDIO | Jurisdicción Tuta, Inside Darknet |
+| 🇲🇦 Marruecos | 555, 205 | 🟡 MEDIO | Extradición de Sébastien Raoult |
+| 🇧🇷 Brasil | 310, 440 | 🟢 BAJO | Víctimas (Google Brasil, Vevo) |
+| 🇮🇳 India | 850, 290 | 🟢 BAJO | Víctimas reportadas |
+| 🇦🇺 Australia | 985, 470 | 🟢 BAJO | Víctimas SaaS reportadas |
 
 ### Tabla de riesgo por región
 
@@ -258,13 +273,14 @@ víctimas reportadas.
 | **Asia del Sur** | 🇮🇳 India | 🟢 BAJO | Víctimas de filtraciones reportadas |
 | **Oceanía** | 🇦🇺 Australia | 🟢 BAJO | Víctimas SaaS reportadas |
 
-### Leyenda
+**Leyenda:**
 
 | Nivel | Color | Significado |
 |---|---|---|
-| 🔴 **ALTO** | `#ff003c` | Presencia activa de actores, arrestos, infraestructura o liderazgo |
-| 🟡 **MEDIO** | `#ffe600` | Jurisdicción de servicios usados, arrestos de afiliados o víctimas |
-| 🟢 **BAJO** | `#00ff88` | Víctimas reportadas sin presencia activa conocida |
+| 🔴 **ALTO** | Rojo | Presencia activa, arrestos, liderazgo o infraestructura |
+| 🟡 **MEDIO** | Amarillo | Jurisdicción de servicios, arrestos de afiliados o víctimas |
+| 🟢 **BAJO** | Verde | Víctimas reportadas sin presencia activa conocida |
+| 🟣 **ATAQUE** | Magenta | Líneas de conexión entre regiones (flujo de ataque) |
 
 ---
 
