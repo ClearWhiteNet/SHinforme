@@ -97,6 +97,15 @@ víctimas reportadas.
 
 ![Mapa mundial de riesgo](mapa-riesgo.svg)
 
+**Leyenda:**
+
+| Nivel | Color | Significado |
+|---|---|---|
+| 🔴 **ALTO** | Rojo | Presencia activa, arrestos, liderazgo o infraestructura |
+| 🟡 **MEDIO** | Amarillo | Jurisdicción de servicios, arrestos de afiliados o víctimas |
+| 🟢 **BAJO** | Verde | Víctimas reportadas sin presencia activa conocida |
+| 🟣 **ATAQUE** | Magenta | Líneas de conexión entre regiones (flujo de ataque) |
+
 ---
 
 ## Mapa mundial de riesgo
@@ -272,15 +281,6 @@ víctimas reportadas.
 | **América del Sur** | 🇧🇷 Brasil | 🟢 BAJO | Víctimas de filtraciones (Google Brasil, Vevo) |
 | **Asia del Sur** | 🇮🇳 India | 🟢 BAJO | Víctimas de filtraciones reportadas |
 | **Oceanía** | 🇦🇺 Australia | 🟢 BAJO | Víctimas SaaS reportadas |
-
-**Leyenda:**
-
-| Nivel | Color | Significado |
-|---|---|---|
-| 🔴 **ALTO** | Rojo | Presencia activa, arrestos, liderazgo o infraestructura |
-| 🟡 **MEDIO** | Amarillo | Jurisdicción de servicios, arrestos de afiliados o víctimas |
-| 🟢 **BAJO** | Verde | Víctimas reportadas sin presencia activa conocida |
-| 🟣 **ATAQUE** | Magenta | Líneas de conexión entre regiones (flujo de ataque) |
 
 ---
 
