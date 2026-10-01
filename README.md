@@ -4,13 +4,37 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Purpose: Defensive](https://img.shields.io/badge/Purpose-Defensive-blue)]()
 [![Status: Public](https://img.shields.io/badge/Status-Public-green)]()
+[![Threat Level: HIGH](https://img.shields.io/badge/Threat%20Level-HIGH-red)]()
+[![Sources: Public](https://img.shields.io/badge/Sources-Public%20Only-lightgrey)]()
+[![No Malware](https://img.shields.io/badge/No-Malware-brightgreen)]()
+[![No PII](https://img.shields.io/badge/No-PII-brightgreen)]()
 
 ![WHITENET](ShinyHunter.png)
+
 > **Aviso:** Este repositorio contiene inteligencia de amenazas de fuentes
 > públicas con fines **defensivos, educativos y de denuncia**. No contiene
 > datos personales de víctimas, credenciales, malware ni herramientas
 > ofensivas. Lee el [DISCLAIMER](DISCLAIMER.md) y [ETHICS](ETHICS.md) antes
 > de usar cualquier contenido.
+
+---
+
+## Tabla de contenidos
+
+- [¿Qué es esto?](#qué-es-esto)
+- [Resumen ejecutivo (BLUF)](#resumen-ejecutivo-bluf)
+- [Mapa mundial de riesgo](#mapa-mundial-de-riesgo)
+- [Cronología rápida 2026](#cronología-rápida-2026)
+- [Actores identificados](#actores-identificados)
+- [Infraestructura e IOCs](#infraestructura-e-iocs)
+- [Técnicas MITRE ATT&CK](#técnicas-mitre-attck)
+- [Contenido del repositorio](#contenido-del-repositorio)
+- [Principios éticos](#principios-éticos)
+- [Cómo usar este repositorio](#cómo-usar-este-repositorio)
+- [Contribuir](#contribuir)
+- [Descargo de responsabilidad](#descargo-de-responsabilidad)
+- [Licencia](#licencia)
+- [Contacto](#contacto)
 
 ---
 
@@ -34,7 +58,281 @@ El objetivo es:
 
 ---
 
-## Contenido
+## Resumen ejecutivo (BLUF)
+
+**ShinyHunters** es un colectivo de ciberdelincuentes de motivación
+financiera que ha evolucionado desde un grupo de filtraciones masivas de
+datos a un **ecosistema fragmentado de extorsión centrado en identidades
+y SaaS**. Google Threat Intelligence Group rastrea su actividad en
+múltiples clusters (UNC6040, UNC6240, UNC6661, UNC6671), lo que refleja
+la naturaleza cambiante y descentralizada del grupo.
+
+**Datos oficiales del FBI (29 de septiembre de 2026):**
+
+- **Más de 140 organizaciones** comprometidas desde 2025
+- **Al menos $70 millones** en pagos de rescate recibidos
+- Arresto de **Pepijn van der Stap ("Umbreon")** en Países Bajos el
+  **15 de septiembre de 2026**
+- El grupo **continúa operando** pese al arresto
+
+**Ataques de alto perfil en 2026:**
+
+- **FBIJobs.gov** — defacement y filtración de PII (21-22 sep)
+- **CyrusOne** — rescate de $13M
+- **Clop** — hackeo del leak site vía Grav CMS
+- **Oracle PeopleSoft** — explotación masiva de CVE-2026-35273
+- **Canvas LMS** — 3.65 TB exfiltrados, 9,000+ instituciones educativas
+
+**Nivel de amenaza: ALTO** para organizaciones con ecosistemas SaaS/cloud,
+especialmente aquellas que dependen de Salesforce, Okta, PeopleSoft y
+plataformas de gestión de identidades.
+
+---
+
+## Mapa mundial de riesgo
+
+Distribución geográfica del riesgo asociado al ecosistema ShinyHunters/SLSH,
+basada en atribuciones OSINT, arrestos, infraestructura identificada y
+víctimas reportadas.
+
+### Mapa SVG inline
+
+```html
+<svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;background:#05010a;">
+  <!-- Estilos -->
+  <defs>
+    <radialGradient id="riskHigh" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff003c" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ff003c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="riskMed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe600" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffe600" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="riskLow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fondo: continentes simplificados -->
+  <g fill="#1a0d2e" stroke="#00fff7" stroke-width="0.5" opacity="0.6">
+    <!-- América del Norte -->
+    <path d="M120,150 L200,120 L260,140 L280,200 L240,260 L180,280 L140,240 Z"/>
+    <!-- América del Sur -->
+    <path d="M240,300 L280,300 L300,360 L280,440 L250,460 L230,400 L220,340 Z"/>
+    <!-- Europa -->
+    <path d="M460,140 L520,130 L560,150 L570,190 L540,220 L490,210 L460,180 Z"/>
+    <!-- África -->
+    <path d="M470,240 L540,230 L580,280 L570,380 L530,440 L490,400 L470,320 Z"/>
+    <!-- Asia -->
+    <path d="M580,120 L720,110 L820,140 L850,200 L800,260 L720,280 L640,240 L590,190 Z"/>
+    <!-- Oceanía -->
+    <path d="M780,340 L850,330 L880,380 L850,420 L790,410 L770,380 Z"/>
+  </g>
+
+  <!-- Puntos de riesgo -->
+  <!-- Países Bajos (Ámsterdam) — ALTO -->
+  <circle cx="520" cy="160" r="60" fill="url(#riskHigh)"/>
+  <circle cx="520" cy="160" r="4" fill="#ff003c"/>
+  <text x="520" y="150" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">NL</text>
+
+  <!-- Jordania (Ammán) — ALTO -->
+  <circle cx="620" cy="220" r="50" fill="url(#riskHigh)"/>
+  <circle cx="620" cy="220" r="4" fill="#ff003c"/>
+  <text x="620" y="210" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">JO</text>
+
+  <!-- Rusia (Moscú) — ALTO -->
+  <circle cx="720" cy="130" r="70" fill="url(#riskHigh)"/>
+  <circle cx="720" cy="130" r="4" fill="#ff003c"/>
+  <text x="720" y="120" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">RU</text>
+
+  <!-- EE.UU. — ALTO -->
+  <circle cx="200" cy="200" r="80" fill="url(#riskHigh)"/>
+  <circle cx="200" cy="200" r="4" fill="#ff003c"/>
+  <text x="200" y="190" fill="#ff003c" font-size="9" font-family="monospace" text-anchor="middle">US</text>
+
+  <!-- Francia — MEDIO -->
+  <circle cx="500" cy="170" r="35" fill="url(#riskMed)"/>
+  <circle cx="500" cy="170" r="3" fill="#ffe600"/>
+  <text x="500" y="162" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">FR</text>
+
+  <!-- España — MEDIO -->
+  <circle cx="480" cy="185" r="30" fill="url(#riskMed)"/>
+  <circle cx="480" cy="185" r="3" fill="#ffe600"/>
+  <text x="480" y="178" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">ES</text>
+
+  <!-- Marruecos — MEDIO -->
+  <circle cx="480" cy="210" r="25" fill="url(#riskMed)"/>
+  <circle cx="480" cy="210" r="3" fill="#ffe600"/>
+  <text x="480" y="203" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">MA</text>
+
+  <!-- Alemania — MEDIO -->
+  <circle cx="530" cy="150" r="30" fill="url(#riskMed)"/>
+  <circle cx="530" cy="150" r="3" fill="#ffe600"/>
+  <text x="530" y="143" fill="#ffe600" font-size="8" font-family="monospace" text-anchor="middle">DE</text>
+
+  <!-- Brasil — BAJO -->
+  <circle cx="270" cy="370" r="35" fill="url(#riskLow)"/>
+  <circle cx="270" cy="370" r="3" fill="#00ff88"/>
+  <text x="270" y="363" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">BR</text>
+
+  <!-- India — BAJO -->
+  <circle cx="700" cy="230" r="30" fill="url(#riskLow)"/>
+  <circle cx="700" cy="230" r="3" fill="#00ff88"/>
+  <text x="700" y="223" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">IN</text>
+
+  <!-- Australia — BAJO -->
+  <circle cx="830" cy="380" r="30" fill="url(#riskLow)"/>
+  <circle cx="830" cy="380" r="3" fill="#00ff88"/>
+  <text x="830" y="373" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">AU</text>
+
+  <!-- Leyenda -->
+  <g transform="translate(20, 440)">
+    <circle cx="10" cy="0" r="6" fill="#ff003c"/>
+    <text x="25" y="4" fill="#d8e6ff" font-size="10" font-family="monospace">ALTO</text>
+    <circle cx="100" cy="0" r="6" fill="#ffe600"/>
+    <text x="115" y="4" fill="#d8e6ff" font-size="10" font-family="monospace">MEDIO</text>
+    <circle cx="200" cy="0" r="6" fill="#00ff88"/>
+    <text x="215" y="4" fill="#d8e6ff" font-size="10" font-family="monospace">BAJO</text>
+  </g>
+
+  <!-- Título -->
+  <text x="500" y="30" fill="#00fff7" font-size="16" font-family="monospace" text-anchor="middle" font-weight="bold">
+    MAPA MUNDIAL DE RIESGO — SHINYHUNTERS / SLSH
+  </text>
+  <text x="500" y="48" fill="#7a8bb5" font-size="10" font-family="monospace" text-anchor="middle">
+    Basado en atribuciones OSINT, arrestos, infraestructura y víctimas reportadas
+  </text>
+</svg>
+```
+
+### Tabla de riesgo por región
+
+| Región | País | Nivel | Justificación |
+|---|---|---|---|
+| **Europa Occidental** | 🇳🇱 Países Bajos | 🔴 ALTO | Arresto de Van der Stap (Ámsterdam, 15 sep 2026); sede de investigación |
+| **Europa Occidental** | 🇫🇷 Francia | 🟡 MEDIO | Arrestos BL2C junio 2025; conexión Android App de @shinydreffus |
+| **Europa Occidental** | 🇩🇪 Alemania | 🟡 MEDIO | Jurisdicción de Tuta; podcast Inside Darknet |
+| **Europa Occidental** | 🇪🇸 España | 🟡 MEDIO | Arrestos DDoSia (Sevilla, Huelva, Manacor) |
+| **Europa Oriental** | 🇷🇺 Rusia | 🔴 ALTO | @shinydreffus declara Moscú; KillNet; NoName057(16) |
+| **Medio Oriente** | 🇯🇴 Jordania | 🔴 ALTO | "Ray" (Ammán) presunto líder actual de SLSH |
+| **Norteamérica** | 🇺🇸 EE.UU. | 🔴 ALTO | FBIJobs.gov; CyrusOne; Matthew D. Lane; víctimas SaaS |
+| **Norteamérica** | 🇨🇦 Canadá | 🟡 MEDIO | Víctimas SaaS reportadas |
+| **Norte de África** | 🇲🇦 Marruecos | 🟡 MEDIO | Extradición de Sébastien Raoult (2023) |
+| **América del Sur** | 🇧🇷 Brasil | 🟢 BAJO | Víctimas de filtraciones (Google Brasil, Vevo) |
+| **Asia del Sur** | 🇮🇳 India | 🟢 BAJO | Víctimas de filtraciones reportadas |
+| **Oceanía** | 🇦🇺 Australia | 🟢 BAJO | Víctimas SaaS reportadas |
+
+### Leyenda
+
+| Nivel | Color | Significado |
+|---|---|---|
+| 🔴 **ALTO** | `#ff003c` | Presencia activa de actores, arrestos, infraestructura o liderazgo |
+| 🟡 **MEDIO** | `#ffe600` | Jurisdicción de servicios usados, arrestos de afiliados o víctimas |
+| 🟢 **BAJO** | `#00ff88` | Víctimas reportadas sin presencia activa conocida |
+
+---
+
+## Cronología rápida 2026
+
+| Fecha | Evento |
+|---|---|
+| **Abril 2026** | Grav publica advisory CVE-2026-42608 |
+| **29 abril 2026** | Compromiso inicial de Canvas/Instructure |
+| **Mayo-junio 2026** | Explotación zero-day CVE-2026-35273 (Oracle PeopleSoft) |
+| **7 mayo 2026** | Segundo compromiso de Canvas; defacement |
+| **12 mayo 2026** | Deadline de publicación de datos Canvas (3.65 TB) |
+| **1 septiembre 2026** | Hackeo del leak site de Clop vía Grav CMS |
+| **15 septiembre 2026** | **Arresto de Pepijn van der Stap ("Umbreon")** |
+| **21 septiembre 2026** | Presunto compromiso de FBIJobs.gov |
+| **22 septiembre 2026** | Defacement de apply.fbijobs.gov |
+| **24 septiembre 2026** | FBI confirma investigación |
+| **25 septiembre 2026** | Filtración incluye datos médicos/psiquiátricos |
+| **25 septiembre 2026** | WAF bypass en Oracle PeopleSoft |
+| **28 septiembre 2026** | FBI anuncia arresto de "uno de los líderes" |
+| **29 septiembre 2026** | ShinyHunters desmiente que Umbreon sea su líder |
+
+---
+
+## Actores identificados
+
+| Actor | Rol | Estado | Notas |
+|---|---|---|---|
+| **ShinyHunters (núcleo)** | Grupo original | Activo, fragmentado | Reclama ataques |
+| **"Ray" (Jordania)** | Líder actual presunto | Activo | Adolescente, miembro de SLSH |
+| **Pepijn van der Stap ("Umbreon")** | Presunto líder histórico | Detenido 15/09/2026 | 24 años, Ámsterdam |
+| **Kuroi'SH (Gabriel Kimiaie Asadi-Bildstein)** | Miembro histórico | Cuenta X activa | NASA, Google Brasil, Vevo, Coinrail |
+| **DréffusHunters (@shinydreffus)** | Facción que reclama legitimidad | Activo en X | Moscú, enlace .onion, sesión Tox |
+| **Lizard Squad (@urharmless)** | Grupo histórico DDoS | Provocador | "You're not Shiny enough" |
+| **SLSH / Scattered LAPSUS$ Hunters** | Facción disidente | Activo | Acusado de intentar asesinatos |
+| **NoName057(16)** | Grupo prorruso DDoS | Activo | 13 interrogados, 1000+ notificados |
+| **KillNet** | Grupo prorruso | Activo | Nikolai Serafimov ("KillMilk") identificado |
+
+---
+
+## Infraestructura e IOCs
+
+### Session IDs (alta prioridad)
+
+```
+056a2eaceb35bfba4586d5ad01cde423ee49f229dc70c1735598785ab7f841ba58
+0501da0be27ccac7d4cec7ca1a84e9463c7dfa9c4da49552b5f32d69980596d7
+05e37988d80adfedf4504c39a1943cad3c082d9ce932c5820ccd98842bbee02f3f
+05108377c665c8b923d81fb3413658ea9fa893fa57ad185da91a0ceb5e4f5eeb58
+```
+
+### Correos electrónicos
+
+```
+sh1nyhunt3rs@tuta.io
+shinycorp@tuta.com / shinycorp@tutanota.com
+shinygroup@tuta.com / shinygroup@onionmail.com
+shinyprocorp@proton.me
+shinycorp@onionmail.com
+```
+
+### XMPP
+
+```
+shinyc0rpsss@xmpp.jp
+```
+
+### Onion DLS
+
+```
+shnyhntww34phqoa6dcgnvps2yu7dlwzmy5lkvejwjdo6z7bmgshzayd.onion
+toolatedhs5dtr2pv6h5kdraneak5gs3sxrecqhoufc5e45edior7mqd.onion
+shinypogk4jjniry5qi7247tznop6mxdrdte2k6pdu5cyo43vdzmrwid.onion
+```
+
+### Dominios de phishing
+
+```
+reliaquest.claims
+[empresa].claims (patrón general)
+```
+
+---
+
+## Técnicas MITRE ATT&CK
+
+| Táctica | Técnica | ID |
+|---|---|---|
+| Reconocimiento | Gather Victim Identity Information | T1589 |
+| Acceso Inicial | Spearphishing via Service (Voice) | T1566.004 |
+| Acceso Inicial | Exploit Public-Facing Application | T1190 |
+| Evasíón | Impersonation | T1656 |
+| Credenciales | MFA Request Generation | T1621 |
+| Credenciales | Steal Web Session Cookie | T1539 |
+| Evasíón | Use Alternate Authentication Material | T1550.001 |
+| Evasíón | Valid Accounts | T1078 |
+| Exfiltración | Exfiltration Over Web Service | T1567 |
+| Impacto | Data Encrypted for Impact | T1486 |
+
+---
+
+## Contenido del repositorio
 
 | Archivo | Descripción |
 |---|---|
