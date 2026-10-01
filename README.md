@@ -95,8 +95,6 @@ Distribución geográfica del riesgo asociado al ecosistema ShinyHunters/SLSH,
 basada en atribuciones OSINT, arrestos, infraestructura identificada y
 víctimas reportadas.
 
-## Mapa mundial de riesgo
-
 ![Mapa mundial de riesgo](mapa-riesgo.svg)
 
 ---
